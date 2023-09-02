@@ -1,0 +1,126 @@
+package circle;
+import java.util.*;
+/**
+ *
+ * @author 22cseb17
+ */
+public class Circle {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+     circles c=new circles();
+     System.out.print("colour :");
+     System.out.println(c.colour);
+     circles c1=new circles(1.0);
+     System.out.print("radius :");
+     System.out.println(c1.radius);
+     c.getradius();
+     c.getarea();    
+    }
+   
+}
+class circles
+{
+    double radius;
+    String colour;
+    circles(){
+         radius=1.0;
+         colour="red";
+    }
+    circles(double r){
+        radius =r;
+    }
+    void getradius()
+    {
+        System.out.println("enter the radius of the circle :");
+        Scanner obj=new Scanner(System.in);
+        radius=obj.nextDouble();
+        System.out.println("radius"+radius);        
+    }
+    void getarea(){
+        double area=3.14*radius*radius;
+        System.out.println("area="+area);
+    }
+}
+
+
+
+// TODO code application logic here
+       
+       
+
+       
+     
+
+
+       
+       
+       
+       
+         
+
+
+
+class Consumer {
+    int consumerNumber;
+    String consumerName;
+    int prevMonthReading;
+    int currMonthReading;
+    String ebType;
+
+    Consumer(int num, String name, int prev, int curr, String type) {
+        consumerNumber = num;
+        consumerName = name;
+        prevMonthReading = prev;
+        currMonthReading = curr;
+        ebType = type;
+    }
+
+    double calculateBill() {
+        int unitsConsumed = currMonthReading - prevMonthReading;
+        double billAmount = 0;
+
+        if (ebType.equalsIgnoreCase("domestic")) {
+            if (unitsConsumed <= 100) {
+                billAmount = unitsConsumed * 1.50;
+            } else if (unitsConsumed <= 200) {
+                billAmount = 100 * 1.50 + (unitsConsumed - 100) * 3;
+            } else if (unitsConsumed <= 500) {
+                billAmount = 100 * 1.50 + 100 * 3 + (unitsConsumed - 200) * 4.50;
+            } else {
+                billAmount = 100 * 1.50 + 100 * 3 + 300 * 4.50 + (unitsConsumed - 500) * 7;
+            }
+        } else if (ebType.equalsIgnoreCase("commercial")) {
+            if (unitsConsumed <= 100) {
+                billAmount = unitsConsumed * 2.50;
+            } else if (unitsConsumed <= 200) {
+                billAmount = 100 * 2.50 + (unitsConsumed - 100) * 5;
+            } else if (unitsConsumed <= 500) {
+                billAmount = 100 * 2.50 + 100 * 5 + (unitsConsumed - 200) * 6.50;
+            } else {
+                billAmount = 100 * 2.50 + 100 * 5 + 300 * 6.50 + (unitsConsumed - 500) * 9;
+            }
+        }
+
+        return billAmount;
+    }
+}
+OUTPUT 
+Enter the number of consumers:1
+Enter details for consumer 1:
+Consumer Number: 15
+Consumer Name: AAA
+Previous Month Reading: 140
+Current Month Reading: 500
+Type of EB Connection (domestic/commercial): domestic
+
+
+Electricity Bill Details:
+Consumer 15:
+Name: AAA
+Bill Amount: Rs. 1170.0
+--------------------
+BUILD SUCCESSFUL (total time: 1 minute 16 seconds)
